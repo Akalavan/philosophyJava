@@ -5,13 +5,14 @@ import static util.Print.print;
 interface HasBatteries {}
 interface Waterproof {}
 interface Shoots {}
+interface Runs {}
 
 class Toy {
     Toy() {}
     Toy(int i) {}
 }
 
-class FancyToy extends Toy implements HasBatteries, Waterproof, Shoots {
+class FancyToy extends Toy implements HasBatteries, Waterproof, Shoots, Runs {
     FancyToy() {
         super(1);
     }

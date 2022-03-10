@@ -1,4 +1,5 @@
 package typeinfo;
+import java.lang.reflect.Field;
 import java.util.*;
 
 abstract class Shape {
@@ -27,6 +28,9 @@ class Triangle extends Shape {
 }
 
 class Rhomboid extends Shape {
+  int i;
+  String s;
+  char[] c;
 
   @Override
   public String toString() {
@@ -38,7 +42,8 @@ class Rhomboid extends Shape {
 public class Shapes {
 
   public static void rotate(Shape shape) {
-    System.out.println(shape + ".rotate");
+    if (!(shape instanceof Circle))
+      System.out.println(shape + ".rotate");
   }
 
   public static void select(List<Shape> shapes, Class c) {
@@ -51,20 +56,32 @@ public class Shapes {
   public static void info(Class c) {
     if (c == null) return;
     System.out.println(c.getSimpleName());
+
+    for (Field field :
+            c.getDeclaredFields()) {
+      System.out.print(field + ", ");
+    }
+    System.out.println();
+
     info(c.getSuperclass());
   }
 
   public static void main(String[] args) {
+    Shape s = new Rhomboid();
+    if ( s instanceof Circle) {
+      Circle r = (Circle) s;
+    }
+
+
     List<Shape> shapeList = Arrays.asList(
       new Circle(), new Square(), new Triangle(), new Rhomboid(), new Triangle(), new Circle(), new Square(), new Rhomboid()
     );
-//    for(Shape shape : shapeList)
-//      shape.draw();
-//
-//    for(Shape shape : shapeList)
-//      if (!(shape instanceof Circle)) {
-//        rotate(shape);
-//      }
+
+
+    for(Shape shape : shapeList)
+      if (!(shape instanceof Circle)) {
+        rotate(shape);
+      }
 
     try {
       select(shapeList, Class.forName("typeinfo.Triangle"));
@@ -72,10 +89,18 @@ public class Shapes {
       e.printStackTrace();
     }
 
+    select(shapeList, Rhomboid.class);
+
     for(Shape shape : shapeList)
       shape.draw();
 
-    TypeInfo8.info(new Rhomboid().getClass());
+    info(Rhomboid.class);
+
+    try {
+      Class.forName("java.lang.String");
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
   }
 } /* Output:
 Circle.draw()
