@@ -2,6 +2,7 @@ package typeinfo;
 
 import typeinfo.factory.Factory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,34 +13,45 @@ class Part {
         return getClass().getSimpleName();
     }
 
-    static List<Factory<? extends Part>> partFactories = new ArrayList<>();
+    static List<? super Part> partFactories = new ArrayList<>();
 
     static {
-        partFactories.add(new FuelFilter.Factory());
-        partFactories.add(new AirFilter.Factory());
-        partFactories.add(new CabinAirFilter.Factory());
-        partFactories.add(new OilFilter.Factory());
-        partFactories.add(new FanBelt.Factory());
-        partFactories.add(new GeneratorBelt.Factory());
-        partFactories.add(new PowerSteerBelt.Factory());
+        partFactories.add(new FuelFilter());
+        partFactories.add(new AirFilter());
+        partFactories.add(new CabinAirFilter());
+        partFactories.add(new OilFilter());
+        partFactories.add(new FanBelt());
+        partFactories.add(new GeneratorBelt());
+        partFactories.add(new PowerSteerBelt());
     }
 
     private static Random rand = new Random(47);
-    public static Part createRandom() {
+//
+//    public static Part createRandom() {
+//        int n = rand.nextInt(partFactories.size());
+//        return partFactories.get(n).create();
+//    }
+
+    public static Part createRandom() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         int n = rand.nextInt(partFactories.size());
-        return partFactories.get(n).create();
+
+        return (Part) partFactories.get(n).getClass().getDeclaredConstructor().newInstance();
+
     }
+
 }
 
 class Filter extends Part {}
 
 class FuelFilter extends Filter {
+
     public static class Factory implements typeinfo.factory.Factory<FuelFilter> {
         @Override
         public FuelFilter create() {
             return new FuelFilter();
         }
     }
+
 }
 
 class AirFilter extends Filter {
@@ -106,7 +118,11 @@ class PowerSteerBelt extends Belt {
 public class RegisteredFactories {
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            System.out.println(Part.createRandom());
+            try {
+                System.out.println(Part.createRandom());
+            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

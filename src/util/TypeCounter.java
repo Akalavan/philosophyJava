@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class TypeCounter extends HashMap<Class<?>, Integer> {
     private Class<?> baseType;
+
     public TypeCounter(Class<?> baseType) {
         this.baseType = baseType;
     }
