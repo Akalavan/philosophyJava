@@ -28,13 +28,17 @@ class SimpleProxy implements Interface {
     @Override
     public void doSomething() {
         System.out.println("SimpleProxy doSomething");
+        long timeStart = System.nanoTime();
         proxied.doSomething();
+        System.out.println(System.nanoTime() - timeStart);
     }
 
     @Override
     public void somethingElse(String arg) {
         System.out.println("SimpleProxy somethingElse " + arg);
+        long timeStart = System.nanoTime();
         proxied.somethingElse(arg);
+        System.out.println(System.nanoTime() - timeStart);
     }
 }
 
