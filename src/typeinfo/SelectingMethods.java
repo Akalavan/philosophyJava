@@ -8,9 +8,11 @@ import static util.Print.print;
 
 class MethodSelector implements InvocationHandler {
   private Object proxied;
+
   public MethodSelector(Object proxied) {
     this.proxied = proxied;
   }
+
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     if(method.getName().equals("interesting"))
       print("Proxy detected the interesting method");
