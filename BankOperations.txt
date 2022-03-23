@@ -1,0 +1,18 @@
+Operation createAccount:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=0}
+Operation adding:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=500}
+Operation adding:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=1000}
+Operation withdraw:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}
+Operation createAccount:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}User{fio='Сергеев Сергей Сергеевич', gender='M'}; BankAccount{owner='User{fio='Сергеев Сергей Сергеевич', gender='M'}', credits=700}
+Operation adding:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}User{fio='Сергеев Сергей Сергеевич', gender='M'}; BankAccount{owner='User{fio='Сергеев Сергей Сергеевич', gender='M'}', credits=1200}
+Operation withdraw:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}User{fio='Сергеев Сергей Сергеевич', gender='M'}; BankAccount{owner='User{fio='Сергеев Сергей Сергеевич', gender='M'}', credits=400}
+Operation adding:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}User{fio='Сергеев Сергей Сергеевич', gender='M'}; BankAccount{owner='User{fio='Сергеев Сергей Сергеевич', gender='M'}', credits=900}
+Operation withdraw:
+User{fio='Михайлов Михаил Михайлович', gender='M'}; BankAccount{owner='User{fio='Михайлов Михаил Михайлович', gender='M'}', credits=200}User{fio='Сергеев Сергей Сергеевич', gender='M'}; BankAccount{owner='User{fio='Сергеев Сергей Сергеевич', gender='M'}', credits=100}

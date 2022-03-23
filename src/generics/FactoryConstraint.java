@@ -3,26 +3,26 @@ package generics;
 import typeinfo.factory.Factory;
 
 interface FactoryI<T> {
-    T create();
+    T create(int i);
 }
 
 class Foo2<T> {
     private T x;
     public <F extends FactoryI<T>> Foo2(F factory) {
-        x = factory.create();
+        x = factory.create(1);
     }
 }
 
 class IntegerFactory implements FactoryI<Integer> {
-    public Integer create() {
-        return new Integer(0);
+    public Integer create(int i) {
+        return 0;
     }
 }
 
 class Widget {
     public static class Factory implements FactoryI<Widget> {
         @Override
-        public Widget create() {
+        public Widget create(int i) {
             return new Widget();
         }
     }

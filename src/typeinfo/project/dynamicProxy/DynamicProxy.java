@@ -49,6 +49,7 @@ public class DynamicProxy implements InvocationHandler {
                     sber.entrySet()){
                 data.append(entry.getKey()).append("; ").append(entry.getValue());
             }
+
             data.append("\n");
             try(BufferedWriter bw = new BufferedWriter(fw)) {
                 bw.write(String.valueOf(data));

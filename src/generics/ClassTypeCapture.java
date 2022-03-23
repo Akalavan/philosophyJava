@@ -7,7 +7,7 @@ class Building {
     public static class Factory implements FactoryI<Building> {
 
         @Override
-        public Building create() {
+        public Building create(int i) {
             return new Building();
         }
     }
@@ -17,7 +17,7 @@ class House extends Building {
     public static class Factory implements FactoryI<House> {
 
         @Override
-        public House create() {
+        public House create(int i) {
             return new House();
         }
     }
@@ -42,7 +42,7 @@ public class ClassTypeCapture<T> {
 
     Object createNew(String typename) {
         try {
-            return map.get(typename).create();
+            return map.get(typename).create(2);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
