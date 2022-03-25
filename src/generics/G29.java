@@ -12,4 +12,10 @@ public class G29 {
 
         Object t = holder.getValue().get(0);
     }
+
+    static void f(List<Holder<?>> list) {
+        list.add(new Holder<>());
+        Holder<Integer> h = (Holder<Integer>) list.get(0);
+        
+    }
 }

@@ -16,7 +16,7 @@ class Generic2<T> {
 
 public class G28 {
 
-    static <T> void f3(Generic1<? super T> g) {
+    static <T> void f3(Generic1<? super T> g) { ;
         Generic2<T> g2 = new Generic2<>();
         g.f(g2.f());
     }

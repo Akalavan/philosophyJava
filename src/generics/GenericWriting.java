@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenericWriting {
+
     static <T> void writeExtract(List<T> list, T item) {
         list.add(item);
     }

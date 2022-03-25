@@ -1,19 +1,22 @@
 package generics;
 
+import java.util.ArrayList;
+
 class FixedSizeStack<T> {
     private int index = 0;
-    private Object[] storage;
+    private ArrayList<Object> storage;
 
     public FixedSizeStack(int size) {
-        storage = new Object[size];
+        storage = new ArrayList<>();
     }
 
     public void push(T item) {
-        storage[index++] = item;
+        storage.add(item);
+        index++;
     }
 
     public T pop() {
-        return (T) storage[--index];
+        return (T) storage.get(--index);
     }
 }
 
