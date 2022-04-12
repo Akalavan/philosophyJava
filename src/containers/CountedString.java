@@ -10,8 +10,7 @@ public class CountedString {
     public CountedString(String s) {
         this.s = s;
         created.add(s);
-        for (String s2 :
-                created) {
+        for (String s2: created) {
             if (s2.equals(s))
                 id++;
         }
