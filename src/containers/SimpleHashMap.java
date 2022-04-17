@@ -5,6 +5,7 @@ import util.MapEntry;
 
 import java.util.*;
 
+
 public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
 
     static final int SIZE = 997;
@@ -16,8 +17,9 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
         V oldValue = null;
         int index = Math.abs(key.hashCode()) % SIZE;
 
-        if (buckets[index] == null)
+        if (buckets[index] == null) {
             buckets[index] = new LinkedList<>();
+        }
 
         LinkedList<MapEntry<K, V>> bucket = buckets[index];
         MapEntry<K, V> pair = new MapEntry<>(key, value);
@@ -25,17 +27,17 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
         ListIterator<MapEntry<K, V>> it = bucket.listIterator();
 
         while (it.hasNext()) {
-           MapEntry<K, V> iPair = it.next();
-           if (iPair.getKey().equals(key)) {
-               oldValue = iPair.getValue();
-               it.set(pair);
-               found = true;
-               break;
-           }
+            MapEntry<K, V> iPair = it.next();
+            if (iPair.getKey().equals(key)) {
+                oldValue = iPair.getValue();
+                it.set(pair);
+                found = true;
+                break;
+            }
         }
 
         if (!found)
-           buckets[index].add(pair);
+            buckets[index].add(pair);
         return oldValue;
     }
 
@@ -60,7 +62,7 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
         for (LinkedList<MapEntry<K, V>> bucket : buckets) {
             if (bucket == null) continue;
 
-            for (MapEntry<K, V> mpair: bucket) {
+            for (MapEntry<K, V> mpair : bucket) {
                 set.add(mpair);
             }
         }

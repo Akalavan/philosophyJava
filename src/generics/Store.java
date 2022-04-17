@@ -26,7 +26,7 @@ class Product {
         price += change;
     }
 
-    public static Generator<Product> generator = new Generator<Product>() {
+    public static Generator<Product> generator = new Generator<>() {
         private Random rand = new Random(47);
         @Override
         public Product next() {

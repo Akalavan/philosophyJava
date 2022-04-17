@@ -12,6 +12,7 @@ class Building {
         }
     }
 }
+
 class House extends Building {
 
     public static class Factory implements FactoryI<House> {
